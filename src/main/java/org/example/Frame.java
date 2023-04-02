@@ -53,8 +53,37 @@ public class Frame extends JFrame {
         calcola.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (base.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Non presenti numeri per la base");
+                    return;
+                }
+
+                if (altezza.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Non presenti numeri per laltezza");
+                    return;
+                }
+                try {
+                    Integer.parseInt(base.getText());
+                    Integer.parseInt(altezza.getText());
+                }catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "Errore, presenti Lettere");
+                    return;
+                }
+
                 int nBase = Integer.parseInt(base.getText());
                 int nAltezza = Integer.parseInt(altezza.getText());
+
+                if (nBase < 0){
+                    System.out.println("Errore, numero negativo");
+                    JOptionPane.showMessageDialog(null, "Errore, numero negativo", "Errore", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (nAltezza < 0){
+                    System.out.println("Errore, numero negativo");
+                    JOptionPane.showMessageDialog(null, "Errore, numero negativo", "Errore", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 nBase *= nAltezza;
 
